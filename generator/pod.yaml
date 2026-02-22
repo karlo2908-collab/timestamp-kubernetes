@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: timestamp-generator
+  namespace: timestamp
 spec:
   containers:
     - name: timestamp-generator
