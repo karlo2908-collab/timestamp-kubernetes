@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: timestamp-generator
+spec:
+  containers:
+    - name: timestamp-generator
+      image: karslo92111/timestamp-generator:latest
+      ports:
+        - containerPort: 8080

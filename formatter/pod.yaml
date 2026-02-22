@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: timestamp-formatter
+spec:
+  containers:
+    - name: timestamp-formatter
+      image: karslo92111/timestamp-formatter:latest
+      ports:
+        - containerPort: 8080
+      env:
+        - name: GENERATOR_SERVICE_URL
+          value: "http://timestamp-generator:8080"
