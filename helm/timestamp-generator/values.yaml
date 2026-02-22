@@ -3,7 +3,7 @@ name: timestamp-generator
 
 image:
   repository: karslo92111/timestamp-generator
-  tag: latest
+  tag: 0.0.1
 
 resources:
   requests:

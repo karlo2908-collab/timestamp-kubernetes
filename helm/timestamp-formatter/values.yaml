@@ -3,7 +3,7 @@ name: timestamp-formatter
 
 image:
   repository: karslo92111/timestamp-formatter
-  tag: latest
+  tag: 0.0.1
 
 generator_service_url: "http://timestamp-generator:8080"
 
