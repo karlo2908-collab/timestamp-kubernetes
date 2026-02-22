@@ -20,7 +20,7 @@ echo "  timestamp-generator: ${VERSION_GENERATOR:-latest}"
 echo "  timestamp-formatter: ${VERSION_FORMATTER:-latest}"
 echo "  namespace: ${NAMESPACE}"
 
-k8s kubectl apply -f namespace.yaml -f resourcequota.yaml
+kubectl apply -f namespace.yaml -f resourcequota.yaml
 
 GENERATOR_ARGS=""
 FORMATTER_ARGS=""
@@ -30,7 +30,7 @@ FORMATTER_ARGS=""
 helm upgrade --install timestamp-generator ./helm/timestamp-generator --namespace "${NAMESPACE}" ${GENERATOR_ARGS}
 helm upgrade --install timestamp-formatter ./helm/timestamp-formatter --namespace "${NAMESPACE}" ${FORMATTER_ARGS}
 
-k8s kubectl rollout status deployment/timestamp-generator -n "${NAMESPACE}"
-k8s kubectl rollout status deployment/timestamp-formatter -n "${NAMESPACE}"
+kubectl rollout status deployment/timestamp-generator -n "${NAMESPACE}"
+kubectl rollout status deployment/timestamp-formatter -n "${NAMESPACE}"
 
 echo "Done."
