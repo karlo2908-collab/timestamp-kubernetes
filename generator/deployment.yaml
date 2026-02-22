@@ -17,3 +17,15 @@ spec:
           image: karslo92111/timestamp-generator:latest
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /_/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /_/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
