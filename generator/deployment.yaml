@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamp-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamp-generator
+  template:
+    metadata:
+      labels:
+        app: timestamp-generator
+    spec:
+      containers:
+        - name: timestamp-generator
+          image: karslo92111/timestamp-generator:latest
+          ports:
+            - containerPort: 8080

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestamp-formatter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timestamp-formatter
+  template:
+    metadata:
+      labels:
+        app: timestamp-formatter
+    spec:
+      containers:
+        - name: timestamp-formatter
+          image: karslo92111/timestamp-formatter:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: GENERATOR_SERVICE_URL
+              value: "http://timestamp-generator:8080"
