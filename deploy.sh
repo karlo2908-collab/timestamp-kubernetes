@@ -16,8 +16,8 @@ for arg in "$@"; do
 done
 
 echo "Deploying:"
-echo "  timestamp-generator: ${VERSION_GENERATOR:-latest}"
-echo "  timestamp-formatter: ${VERSION_FORMATTER:-latest}"
+echo "  timestamp-generator: ${VERSION_GENERATOR}"
+echo "  timestamp-formatter: ${VERSION_FORMATTER}"
 echo "  namespace: ${NAMESPACE}"
 
 kubectl apply -f namespace.yaml -f resourcequota.yaml
