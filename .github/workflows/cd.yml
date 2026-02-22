@@ -1,0 +1,12 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  checkout:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
