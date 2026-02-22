@@ -1,0 +1,5 @@
+apiVersion: v2
+name: timestamp-generator
+description: Generates timestamps
+version: 0.1.0
+appVersion: "latest"

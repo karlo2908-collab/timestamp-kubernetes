@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: timestamp-generator
+  namespace: timestamp
+spec:
+  selector:
+    app: timestamp-generator
+  ports:
+    - port: 8080
+      targetPort: 8080

@@ -1,0 +1,5 @@
+apiVersion: v2
+name: timestamp-formatter
+description: Formats timestamps
+version: 0.1.0
+appVersion: "latest"
