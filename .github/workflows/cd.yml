@@ -13,3 +13,8 @@ jobs:
 
       - name: Deploy
         run: bash deploy.sh
+
+      - name: Run integration tests
+        run: |
+          pip install requests --quiet
+          FORMATTER_URL=http://localhost:30081 python tests/integration/test_integration.py
