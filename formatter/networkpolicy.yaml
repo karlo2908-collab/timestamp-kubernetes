@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: timestamp_formatter
+  name: timestamp-formatter
   namespace: timestamp
 spec:
   podSelector:
     matchLabels:
-      app: timestamp_formatter
+      app: timestamp-formatter
   policyTypes:
     - Ingress
   ingress:
