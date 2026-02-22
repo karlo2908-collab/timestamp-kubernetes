@@ -18,6 +18,7 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           securityContext:
             runAsNonRoot: true
+            runAsUser: 1000
             allowPrivilegeEscalation: false
           ports:
             - containerPort: 8080
