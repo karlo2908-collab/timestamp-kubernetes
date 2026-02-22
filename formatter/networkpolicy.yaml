@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: timestamp_formatter
+  namespace: timestamp
+spec:
+  podSelector:
+    matchLabels:
+      app: timestamp_formatter
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - port: 8080
