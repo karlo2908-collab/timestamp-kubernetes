@@ -1,0 +1,18 @@
+namespace: timestamp
+name: timestamp-generator
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "64Mi"
+  limits:
+    cpu: "500m"
+    memory: "128Mi"
+
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 5
+
+livenessProbe:
+  initialDelaySeconds: 10
+  periodSeconds: 10

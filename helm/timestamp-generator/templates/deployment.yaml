@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: timestamp-generator
-  namespace: timestamp
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: timestamp-generator
+      app: {{ .Values.name }}
   template:
     metadata:
       labels:
-        app: timestamp-generator
+        app: {{ .Values.name }}
     spec:
       containers:
-        - name: timestamp-generator
+        - name: {{ .Values.name }}
           image: karslo92111/timestamp-generator:latest
           ports:
             - containerPort: 8080
           resources:
             requests:
-              cpu: "100m"
-              memory: "64Mi"
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
             limits:
-              cpu: "500m"
-              memory: "128Mi"
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
           readinessProbe:
             httpGet:
               path: /_/health
               port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           livenessProbe:
             httpGet:
               path: /_/health
               port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 10
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
