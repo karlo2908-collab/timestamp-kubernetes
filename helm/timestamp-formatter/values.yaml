@@ -1,6 +1,10 @@
 namespace: timestamp
 name: timestamp-formatter
 
+image:
+  repository: karslo92111/timestamp-formatter
+  tag: latest
+
 generator_service_url: "http://timestamp-generator:8080"
 
 resources:
