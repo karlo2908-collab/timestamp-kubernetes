@@ -46,6 +46,57 @@ Following simple scripts ensure startup and cleanup of kubernetes-helm build:
 ./cleanup.sh
 ```
 
+After running deployment scripts pods are rolled out:
+
+```bash
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes# bash deploy.sh
+Deploying:
+  timestamp-generator:
+  timestamp-formatter:
+  namespace: timestamp
+namespace/timestamp unchanged
+resourcequota/timestamp-quota unchanged
+Release "timestamp-generator" has been upgraded. Happy Helming!
+NAME: timestamp-generator
+LAST DEPLOYED: Mon Feb 23 18:35:18 2026
+NAMESPACE: timestamp
+STATUS: deployed
+REVISION: 13
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+Release "timestamp-formatter" has been upgraded. Happy Helming!
+NAME: timestamp-formatter
+LAST DEPLOYED: Mon Feb 23 18:35:18 2026
+NAMESPACE: timestamp
+STATUS: deployed
+REVISION: 13
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+deployment "timestamp-generator" successfully rolled out
+deployment "timestamp-formatter" successfully rolled out
+Done.
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes# kubectl get pods -n timestamp
+NAME                                   READY   STATUS    RESTARTS   AGE
+timestamp-formatter-5f7b8d489c-mxc2c   1/1     Running   0          27h
+timestamp-generator-7dc9f9bb9-nhkwh    1/1     Running   0          27h
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes#
+```
+
+After cleanup:
+
+```bash
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes# bash cleanup.sh
+Uninstalling Helm releases...
+release "timestamp-generator" uninstalled
+release "timestamp-formatter" uninstalled
+Deleting namespace...
+namespace "timestamp" deleted
+Done.
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes# kubectl get pods -n timestamp
+No resources found in timestamp namespace.
+root@kube:/opt/actions-runner/_work/timestamp-kubernetes/timestamp-kubernetes#
+```
+
 ### `deploy.sh` usage
 
 ```bash
